@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import store, {update_firstname, update_lastname} from './../../store.js'
 import './Author.css';
 
 class Author extends Component {
@@ -23,7 +24,14 @@ class Author extends Component {
     });
   }
   saveChanges() {
-    // Send data to Redux state
+    store.dispatch({
+      type: update_firstname,
+      payload: this.state.authorFirst
+    })
+    store.dispatch({
+      type: update_lastname,
+      payload: this.state.authorLast
+    })
   }
   render() {
     return (
